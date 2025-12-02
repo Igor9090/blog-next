@@ -12,7 +12,7 @@ export default function Comments({ slug, title }: CommentProps) {
       <DiscussionEmbed
         shortname="meublog-gf16ukaifa"
         config={{
-          url: `vcap.me:3000/post/${slug}`,
+          url: `https://blognextstrapi.netlify.app`,
           identifier: slug,
           title: title,
           language: 'pt_BR',
