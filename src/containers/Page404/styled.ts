@@ -11,6 +11,6 @@ export const ContainerError = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 90vw;
+  width: 100vw;
   height: 100vh;
 `;
