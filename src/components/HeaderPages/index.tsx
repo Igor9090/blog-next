@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { Header, Title } from './styled';
 import { useRouter } from 'next/router';
+import { SITE_NAME } from '@/configs/config';
 
 export default function HeaderPages() {
   const router = useRouter();
@@ -11,7 +12,7 @@ export default function HeaderPages() {
   return (
     <Header $transparent={isPostPage}>
       <Link href="/">
-        <Title>CineScope</Title>
+        <Title>{SITE_NAME}</Title>
       </Link>
     </Header>
   );
