@@ -12,5 +12,5 @@ export const ContainerError = styled.section`
   justify-content: center;
   align-items: center;
   width: 90vw;
-  height: 90vh;
+  height: 100vh;
 `;
