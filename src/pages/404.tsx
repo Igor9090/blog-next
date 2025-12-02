@@ -1,3 +1,5 @@
-export default function PageError() {
-  return <h1>Buceta</h1>
+import PageError from '@/containers/Page404';
+
+export default function Page404() {
+  return <PageError />;
 }
