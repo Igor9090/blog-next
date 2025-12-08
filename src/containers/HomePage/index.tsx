@@ -1,5 +1,5 @@
 import { PostData } from '@/domain/posts/posts';
-import { Blur, Container, Data, Div, Layout } from './styled';
+import { Blur, Container, Data, DirectorsTitle, Div, Layout } from './styled';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '@/styles/theme';
 import Link from 'next/link';
@@ -9,9 +9,10 @@ import { SITE_NAME } from '@/configs/config';
 
 type HomePageProps = {
   posts: PostData[];
+  directors: string;
 };
 
-export default function PostCards({ posts }: HomePageProps) {
+export default function PostCards({ posts, directors }: HomePageProps) {
   return (
     <>
       <Head>
@@ -22,6 +23,11 @@ export default function PostCards({ posts }: HomePageProps) {
         />
       </Head>
       <ThemeProvider theme={theme}>
+        <DirectorsTitle>
+          {directors && posts.length > 0 && (
+            <div>Filmes de {posts[0].author.name}</div>
+          )}
+        </DirectorsTitle>
         <Layout>
           <Container>
             {posts.map((post) => {

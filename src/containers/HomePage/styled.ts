@@ -100,6 +100,13 @@ export const Data = styled.div`
     margin: 3px 0;
     padding: 1px 5px;
     border: 1px solid white;
-    border-radius: 3px
+    border-radius: 3px;
   }
+`;
+
+export const DirectorsTitle = styled.h1`
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 80px;
 `;

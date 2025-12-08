@@ -3,6 +3,7 @@ export type PostID = number;
 export type PostAuthor = {
   id: PostID;
   name: string;
+  slug: string;
   created_by: number;
   updated_by: number;
   created_at: string;

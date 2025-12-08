@@ -15,13 +15,13 @@ type PostContentProps = {
 export default function PostContent({ post }: PostContentProps) {
   return (
     <Container>
-      <div className='infoBlock'>
+      <div className="infoBlock">
         <TextBlock block={post.blocks} />
         <ListBlock block={post.blocks} />
         <RatingBlock block={post.blocks} />
       </div>
       <div className="dataBlock">
-        <MetadataBlock block={post.blocks} />
+        <MetadataBlock block={post.blocks} slugUrl={post.author.slug} />
       </div>
     </Container>
   );

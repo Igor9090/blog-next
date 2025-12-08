@@ -30,4 +30,8 @@ export const InfoCast = styled.div`
   .metadata-item {
     margin: 5px 0;
   }
+
+  .link {
+    font-style: italic;
+  }
 `;
