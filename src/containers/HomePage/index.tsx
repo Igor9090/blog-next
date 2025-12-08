@@ -9,7 +9,7 @@ import { SITE_NAME } from '@/configs/config';
 
 type HomePageProps = {
   posts: PostData[];
-  directors: string;
+  directors?: string;
 };
 
 export default function PostCards({ posts, directors }: HomePageProps) {

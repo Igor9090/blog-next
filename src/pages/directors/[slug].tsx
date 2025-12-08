@@ -2,7 +2,7 @@ import HomePage from '@/containers/HomePage';
 import { getAllPost } from '@/data/posts/getAll-post';
 import { PostData } from '@/domain/posts/posts';
 import { theme } from '@/styles/theme';
-import { GetServerSideProps, GetStaticProps } from 'next';
+import { GetServerSideProps } from 'next';
 import { ThemeProvider } from 'styled-components';
 
 type PostProps = {
