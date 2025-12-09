@@ -4,7 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import { theme } from '@/styles/theme';
 import PostContent from '@/components/PostContent';
 import PostCover from '@/components/PostCover';
-import Comments from '@/comments';
+import Comments from '@/components/comments';
 import { SITE_NAME } from '@/configs/config';
 import Head from 'next/head';
 import { removeHtmlTags } from '@/utils/remove-html';
