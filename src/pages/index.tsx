@@ -17,7 +17,7 @@ export default function Home({ posts }: PostProps) {
   );
 }
 
-export const getStaticProps = (async (context) => {
+export const getStaticProps = (async () => {
   const posts = await getAllPost('sort=id:desc');
-  return { props: { posts } };
+  return { props: { posts }, revalidate: 600 };
 }) satisfies GetStaticProps<{ posts: PostData[] }>;

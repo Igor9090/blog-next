@@ -1,4 +1,3 @@
-import { theme } from '@/styles/theme';
 import styled, { css } from 'styled-components';
 
 export const Layout = styled.section`

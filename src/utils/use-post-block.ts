@@ -1,12 +1,12 @@
-import { BlockMetadata, BlockRating } from '@/domain/posts/posts';
+import { BlockMetadata, BlockRating, PostBlock } from '@/domain/posts/posts';
 
-export default function usePostBlocks(block: any[]) {
-  const metadata = block.find(
+export function getPostBlocks(blocks: PostBlock[]) {
+  const metadata = blocks.find(
     (data): data is BlockMetadata =>
       data.__component === 'component-metadata.metadata',
   );
 
-  const rating = block.find(
+  const rating = blocks.find(
     (score): score is BlockRating =>
       score.__component === 'component-rating.rating',
   );

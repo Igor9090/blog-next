@@ -1,11 +1,10 @@
 import { PostData } from '@/domain/posts/posts';
-import { Blur, Container, Data, DirectorsTitle, Div, Layout } from './styled';
+import { Layout, Container, DirectorsTitle, Div, Blur, Data } from './styled';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '@/styles/theme';
-import Link from 'next/link';
-import usePostBlocks from '@/utils/use-post-block';
 import Head from 'next/head';
 import { SITE_NAME } from '@/configs/config';
+import { getPostsBlocks } from '@/utils/posts-filter';
 
 type HomePageProps = {
   posts: PostData[];
@@ -13,10 +12,14 @@ type HomePageProps = {
 };
 
 export default function PostCards({ posts, directors }: HomePageProps) {
+  const postsWithBlocks = getPostsBlocks(posts); // ✅ função pura, sem hook
+
   return (
     <>
       <Head>
-        <title>{SITE_NAME}</title>
+        <title>
+          {directors ? `${SITE_NAME} - ${posts[0].author.name}` : SITE_NAME}
+        </title>
         <meta
           name="description"
           content="Blog dedicado ao mundo do cinema: análises, críticas, novidades, lançamentos e listas dos melhores filmes."
@@ -30,38 +33,35 @@ export default function PostCards({ posts, directors }: HomePageProps) {
         </DirectorsTitle>
         <Layout>
           <Container>
-            {posts.map((post) => {
-              const { metadata, rating } = usePostBlocks(post.blocks);
+            {postsWithBlocks.map(({ post, blocks }) => {
+              const { metadata, rating } = blocks;
 
               return (
-                <>
-                  <Div key={post.id}>
-                    <Link href={`/post/${post.slug}`}>
+                <Div key={post.id}>
+                  <a href={`/post/${post.slug}`}>
+                    <img
+                      className="thumb"
+                      src={post.cover.formats.thumbnail.url}
+                      alt={post.title}
+                    />
+
+                    <Blur>
                       <img
-                        className="thumb"
-                        src={post.cover.formats.thumbnail.url}
+                        className="small"
+                        src={post.cover.formats.small.url}
                         alt={post.title}
                       />
-
-                      <Blur>
-                        <img
-                          className="small"
-                          src={post.cover.formats.small.url}
-                          alt={post.title}
-                        />
-                        <Data>
-                          <span className="title">{post.title}</span>
-
-                          <span className="rating">{metadata?.rating}</span>
-                          <span className="year">{metadata?.year}</span>
-                          <span className="duration">{metadata?.duration}</span>
-                          <span className="genre">{metadata?.genre}</span>
-                          <span className="score">{rating?.score}</span>
-                        </Data>
-                      </Blur>
-                    </Link>
-                  </Div>
-                </>
+                      <Data>
+                        <span className="title">{post.title}</span>
+                        <span className="rating">{metadata?.rating}</span>
+                        <span className="year">{metadata?.year}</span>
+                        <span className="duration">{metadata?.duration}</span>
+                        <span className="genre">{metadata?.genre}</span>
+                        <span className="score">{rating?.score}</span>
+                      </Data>
+                    </Blur>
+                  </a>
+                </Div>
               );
             })}
           </Container>

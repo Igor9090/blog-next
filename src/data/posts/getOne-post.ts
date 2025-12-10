@@ -2,8 +2,8 @@ import { PostData } from '@/domain/posts/posts';
 import { fetchJson } from '@/utils/fetch-json';
 
 type StrapiResponse<T> = {
-  data: T[];
-  meta?: any;
+  data?: T[];
+  meta?: Record<string, unknown>; 
 };
 
 export const getOnePost = async (slug: string): Promise<PostData | null> => {

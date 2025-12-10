@@ -1,4 +1,3 @@
-import { Coiny } from 'next/font/google';
 import styled, { css } from 'styled-components';
 
 export const Container = styled.section`
